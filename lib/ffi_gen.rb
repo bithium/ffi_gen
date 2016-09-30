@@ -372,6 +372,8 @@ class FFIGen
       Clang.get_children(declaration_cursor).each do |enum_constant|
         constant_name = read_name enum_constant
 
+        next if enum_constant[:kind] != :enum_constant_decl
+
         constant_location = Clang.get_cursor_location enum_constant
         constant_comment_range = Clang.get_range previous_constant_location, constant_location
         constant_description, _ = extract_comment translation_unit, constant_comment_range
