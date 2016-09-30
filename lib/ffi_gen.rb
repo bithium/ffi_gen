@@ -447,6 +447,8 @@ class FFIGen
           last_nested_declaration.name ||= Name.new(name.parts + field_name.parts) if last_nested_declaration
           last_nested_declaration = nil
           struct.fields << { name: field_name, type: field_type, comment: field_comment }
+        when :packed_attr
+        when :unexposed_attr
         else
           raise
         end
